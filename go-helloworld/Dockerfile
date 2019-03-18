@@ -5,7 +5,7 @@ FROM golang as builder
 
 # Copy local code to the container image.
 WORKDIR /go/src/github.com/swordphilic/knative-apps/go-helloworld
-COPY . .
+COPY ./go-helloworld/ .
 
 # Build the helloworld command inside the container.
 # (You may fetch or manage dependencies here,
