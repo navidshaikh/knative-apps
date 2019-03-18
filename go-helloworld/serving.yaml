@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: helloworld-go
+  namespace: myproject
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: docker.io/swordphilic/helloworld-go@sha256:4c66021a9bdf5ff35f8c3ce5dc925568d5e782faeef8a2d5b99d4c04ba1fc08e
+            env:
+              - name: TARGET
+                value: "Go Sample v3"
