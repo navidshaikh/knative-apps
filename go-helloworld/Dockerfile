@@ -10,14 +10,14 @@ COPY . .
 # Build the helloworld command inside the container.
 # (You may fetch or manage dependencies here,
 # either manually or with a tool like "godep".)
-RUN CGO_ENABLED=0 GOOS=linux go build -v helloworld.go -o helloworld
+RUN CGO_ENABLED=0 GOOS=linux go build -v -o helloworld
 
 # Use a Docker multi-stage build to create a lean production image.
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
 FROM alpine
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /go/src/github.com/knative/docs/helloworld/helloworld /helloworld
+COPY --from=builder /go/src/github.com/swordphilic/knative-apps/go-helloworld/helloworld /helloworld
 
 # Service must listen to $PORT environment variable.
 # This default value facilitates local development.
